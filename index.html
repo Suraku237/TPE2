@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cantine AZIMUT - Saveurs de Yaoundé à Tinga</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* STYLE COMPLET */
+        :root {
+            --primary-color: #e44c26;
+            --secondary-color: #f9b248;
+            --dark-color: #2c3e50;
+            --light-color: #f8f9fa;
+            --text-color: #333;
+            --text-light: #666;
+            --border-color: #eaeaea;
+            --shadow: 0 5px 15px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+            --border-radius: 8px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Open Sans', sans-serif; color: var(--text-color); line-height: 1.6; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; font-weight: 600; line-height: 1.3; }
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        section { padding: 80px 0; }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header h2 { font-size: 2.5rem; color: var(--dark-color); margin-bottom: 10px; }
+        .section-header p { color: var(--text-light); font-size: 1.1rem; }
+        .btn {
+            display: inline-block; padding: 12px 28px; background-color: var(--primary-color); color: white;
+            border: none; border-radius: var(--border-radius); font-weight: 600; text-decoration: none;
+            cursor: pointer; transition: var(--transition); font-size: 1rem; text-align: center;
+        }
+        .btn:hover { background-color: #d1401f; transform: translateY(-3px); box-shadow: var(--shadow); }
+        .btn-primary { background-color: var(--primary-color); }
+        .btn-secondary { background-color: var(--secondary-color); }
+        .btn-outline { background-color: transparent; border: 2px solid var(--primary-color); color: var(--primary-color); }
+        .btn-outline:hover { background-color: var(--primary-color); color: white; }
+        .btn-small { padding: 8px 16px; font-size: 0.9rem; }
+        .btn-whatsapp { background-color: #25D366; }
+        .btn-call { background-color: #4CAF50; }
+        .text-center { text-align: center; }
+        
+        /* NAVBAR */
+        .navbar {
+            position: fixed; top: 0; left: 0; width: 100%; background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 1000; padding: 15px 0;
+        }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; text-decoration: none; color: var(--dark-color); font-size: 1.5rem; }
+        .logo img { height: 40px; margin-right: 10px; }
+        .nav-menu { display: flex; list-style: none; align-items: center; }
+        .nav-menu li { margin-left: 30px; }
+        .nav-menu a {
+            text-decoration: none; color: var(--text-color); font-weight: 500;
+            transition: var(--transition); padding: 5px 0; position: relative;
+        }
+        .nav-menu a:hover { color: var(--primary-color); }
+        .nav-menu a.active { color: var(--primary-color); }
+        .nav-menu a.active::after {
+            content: ''; position: absolute; bottom: 0; left: 0;
+            width: 100%; height: 2px; background-color: var(--primary-color);
+        }
+        .nav-cta { margin-left: 20px; }
+        .menu-toggle { display: none; flex-direction: column; cursor: pointer; }
+        .menu-toggle .bar { width: 25px; height: 3px; background-color: var(--dark-color); margin: 3px 0; transition: var(--transition); }
+        
+        /* HERO */
+        .hero { padding-top: 140px; background: linear-gradient(135deg, #fdf6e3 0%, #f8f9fa 100%); overflow: hidden; }
+        .hero-content { display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+        .hero-text { flex: 1; }
+        .hero-text h1 { font-size: 3.2rem; color: var(--dark-color); margin-bottom: 20px; line-height: 1.2; }
+        .hero-text .subtitle { font-size: 1.2rem; color: var(--text-light); margin-bottom: 30px; max-width: 600px; }
+        .hero-buttons { display: flex; gap: 15px; flex-wrap: wrap; }
+        .hero-image { flex: 1; text-align: center; }
+        .hero-image img { max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow); }
+        
+        /* ABOUT */
+        .about-content { display: flex; align-items: center; gap: 50px; }
+        .about-image, .about-text { flex: 1; }
+        .about-image img { width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow); }
+        .about-text h3 { font-size: 1.8rem; margin-bottom: 20px; color: var(--dark-color); }
+        .about-text p { margin-bottom: 20px; color: var(--text-light); }
+        .about-features { display: flex; gap: 30px; margin-top: 30px; flex-wrap: wrap; }
+        .feature { display: flex; flex-direction: column; align-items: center; text-align: center; flex: 1; min-width: 120px; }
+        .feature i { font-size: 2rem; color: var(--primary-color); margin-bottom: 10px; }
+        .feature span { font-weight: 600; color: var(--dark-color); }
+        
+        /* SPECIALTIES */
+        .specialties { background-color: #f8f9fa; }
+        .specialties-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-bottom: 40px; }
+        .specialty-card { background-color: white; border-radius: var(--border-radius); overflow: hidden; box-shadow: var(--shadow); transition: var(--transition); }
+        .specialty-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+        .specialty-img { height: 200px; overflow: hidden; }
+        .specialty-img img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
+        .specialty-card:hover .specialty-img img { transform: scale(1.1); }
+        .specialty-content { padding: 20px; }
+        .specialty-content h3 { font-size: 1.3rem; margin-bottom: 10px; color: var(--dark-color); }
+        .specialty-content p { color: var(--text-light); font-size: 0.95rem; margin-bottom: 15px; }
+        .specialty-price { font-weight: 700; color: var(--primary-color); font-size: 1.2rem; }
+        /* Gallery Preview Section */
+.gallery-preview {
+    background-color: #f8f9fa;
+    padding: 80px 0;
+}
+
+.preview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto 40px;
+}
+
+.preview-item {
+    text-align: center;
+    transition: var(--transition);
+}
+
+.preview-item:hover {
+    transform: translateY(-10px);
+}
+
+.preview-image {
+    margin-bottom: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.preview-item:hover .preview-image {
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.preview-caption {
+    font-weight: 600;
+    color: var(--dark-color);
+    font-size: 1.2rem;
+}
+        /* INFO SECTION */
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .info-card { background-color: white; padding: 30px; border-radius: var(--border-radius); box-shadow: var(--shadow); text-align: center; transition: var(--transition); }
+        .info-card:hover { transform: translateY(-5px); }
+        .info-icon { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 20px; }
+        .info-card h3 { font-size: 1.5rem; margin-bottom: 15px; color: var(--dark-color); }
+        .info-card p { color: var(--text-light); margin-bottom: 10px; }
+        .schedule .day { display: flex; justify-content: space-between; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid var(--border-color); }
+        .schedule .day:last-child { border-bottom: none; }
+        .contact-buttons { display: flex; gap: 10px; justify-content: center; margin-top: 20px; }
+        .btn-link { color: var(--primary-color); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; margin-top: 10px; }
+        .btn-link i { margin-left: 5px; transition: var(--transition); }
+        .btn-link:hover i { transform: translateX(5px); }
+        
+        /* FOOTER */
+        .footer { background-color: var(--dark-color); color: white; padding: 60px 0 20px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-logo { display: flex; align-items: center; text-decoration: none; color: white; font-size: 1.5rem; margin-bottom: 20px; }
+        .footer-logo img { height: 40px; margin-right: 10px; }
+        .footer-col p { color: #bbb; margin-bottom: 20px; }
+        .social-links { display: flex; gap: 15px; }
+        .social-links a {
+            display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px;
+            background-color: rgba(255,255,255,0.1); border-radius: 50%; color: white;
+            text-decoration: none; transition: var(--transition);
+        }
+        .social-links a:hover { background-color: var(--primary-color); transform: translateY(-3px); }
+        .footer-col h4 { font-size: 1.3rem; margin-bottom: 20px; color: white; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul li a { color: #bbb; text-decoration: none; transition: var(--transition); }
+        .footer-col ul li a:hover { color: var(--primary-color); padding-left: 5px; }
+        .contact-info li { display: flex; align-items: center; margin-bottom: 15px; }
+        .contact-info i { margin-right: 10px; color: var(--primary-color); width: 20px; }
+        .newsletter-form { display: flex; margin-top: 15px; }
+        .newsletter-form input { flex: 1; padding: 12px; border: none; border-radius: var(--border-radius) 0 0 var(--border-radius); font-family: 'Open Sans', sans-serif; }
+        .newsletter-form button { border-radius: 0 var(--border-radius) var(--border-radius) 0; }
+        .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); color: #bbb; font-size: 0.9rem; }
+        .footer-bottom p { margin-bottom: 5px; }
+        
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+            .hero-content { flex-direction: column; text-align: center; }
+            .hero-text h1 { font-size: 2.8rem; }
+            .about-content { flex-direction: column; }
+            .hero-buttons { justify-content: center; }
+        }
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed; top: 70px; left: -100%; width: 100%; flex-direction: column;
+                background-color: white; text-align: center; transition: var(--transition);
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1); padding: 20px 0; z-index: 999;
+            }
+            .nav-menu.active { left: 0; }
+            .nav-menu li { margin: 15px 0; }
+            .menu-toggle { display: flex; }
+            .nav-cta { margin: 20px 0 0 0; }
+            .hero-text h1 { font-size: 2.3rem; }
+            .section-header h2 { font-size: 2rem; }
+            section { padding: 60px 0; }
+        }
+        @media (max-width: 576px) {
+            .hero-text h1 { font-size: 2rem; }
+            .btn { padding: 10px 20px; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .contact-buttons { flex-direction: column; }
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <div style="width: 40px; height: 40px; background: var(--primary-color); border-radius: 5px; margin-right: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">AZ</div>
+                <span>Cantine <strong>AZIMUT</strong></span>
+            </a>
+            
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active">Accueil</a></li>
+                <li><a href="menu.html">Notre Menu</a></li>
+                <li><a href="galerie.html">Galerie</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="nav-cta"><a href="tel:+23712345678" class="btn btn-call"><i class="fas fa-phone"></i> Commander</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Section Héro -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>Saveurs Authentiques du Cameroun</h1>
+                <p class="subtitle">À la Cantine AZIMUT de Tinga, Yaoundé, nous préparons chaque plat avec passion et des ingrédients frais. Découvrez l'authenticité des saveurs locales dans un cadre chaleureux et convivial.</p>
+                <div class="hero-buttons">
+                    <a href="menu.html" class="btn btn-primary">Voir le Menu</a>
+                    <a href="tel:+23712345678" class="btn btn-secondary"><i class="fas fa-phone-alt"></i> Commander</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div style="width: 100%; height: 400px; background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)); border-radius: var(--border-radius); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; box-shadow: var(--shadow);">
+                    <div style="text-align: center; padding: 20px;">
+                        <i class="fas fa-utensils" style="font-size: 4rem; margin-bottom: 20px;"></i>
+                        <p>Vos plats préférés<br>préparés avec amour</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section À Propos -->
+    <section class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>Bienvenue à la Cantine AZIMUT</h2>
+                <p>Notre histoire et notre engagement</p>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <div style="width: 100%; height: 400px; background: linear-gradient(45deg, #2c3e50, #4a6491); border-radius: var(--border-radius); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; box-shadow: var(--shadow);">
+                        <div style="text-align: center; padding: 20px;">
+                            <i class="fas fa-store" style="font-size: 4rem; margin-bottom: 20px;"></i>
+                            <p>Notre cantine à Tinga<br>Yaoundé</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h3>Depuis 2020, au cœur de Tinga</h3>
+                    <p>La Cantine AZIMUT est née de l'envie de partager les saveurs authentiques de la cuisine camerounaise dans un cadre convivial. Notre chef et son équipe sélectionnent chaque jour les meilleurs produits du marché pour vous offrir une expérience culinaire unique.</p>
+                    <p>Nous nous engageons à vous servir des plats faits maison, préparés avec soin et suivant les recettes traditionnelles qui font la renommée de notre gastronomie.</p>
+                    <div class="about-features">
+                        <div class="feature">
+                            <i class="fas fa-seedling"></i>
+                            <span>Ingrédients frais</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-utensils"></i>
+                            <span>Recettes traditionnelles</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-heart"></i>
+                            <span>Préparé avec passion</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-users"></i>
+                            <span>Ambiance conviviale</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Spécialités -->
+    <section class="specialties" id="menu">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nos Incontournables</h2>
+                <p>Découvrez nos plats les plus appréciés</p>
+            </div>
+            <div class="specialties-grid">
+                <div class="specialty-card">
+                    <div class="specialty-img">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(45deg, #2ecc71, #27ae60); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
+                            <i class="fas fa-leaf" style="font-size: 3rem;"></i>
+                        </div>
+                    </div>
+                    <div class="specialty-content">
+                        <h3>Ndolé aux crevettes</h3>
+                        <p>Notre plat signature : feuilles de ndolé, arachides, viande et crevettes séchées. Servi avec plantain ou riz.</p>
+                        <div class="specialty-price">3 500 FCFA</div>
+                    </div>
+                </div>
+                
+                <div class="specialty-card">
+                    <div class="specialty-img">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(45deg, #e74c3c, #c0392b); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
+                            <i class="fas fa-drumstick-bite" style="font-size: 3rem;"></i>
+                        </div>
+                    </div>
+                    <div class="specialty-content">
+                        <h3>Poulet DG</h3>
+                        <p>Poulet frit avec plantain, légumes frais et épices locales. Un classique camerounais revisité.</p>
+                        <div class="specialty-price">3 000 FCFA</div>
+                    </div>
+                </div>
+                
+                <div class="specialty-card">
+                    <div class="specialty-img">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(45deg, #3498db, #2980b9); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
+                            <i class="fas fa-fish" style="font-size: 3rem;"></i>
+                        </div>
+                    </div>
+                    <div class="specialty-content">
+                        <h3>Poisson braisé</h3>
+                        <p>Capitaine ou maquereau grillé avec épices, servi avec plantain ou bâton de manioc. Frais et savoureux.</p>
+                        <div class="specialty-price">4 000 FCFA</div>
+                    </div>
+                </div>
+                
+                <div class="specialty-card">
+                    <div class="specialty-img">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(45deg, #f39c12, #e67e22); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
+                            <i class="fas fa-mortar-pestle" style="font-size: 3rem;"></i>
+                        </div>
+                    </div>
+                    <div class="specialty-content">
+                        <h3>Sauce d'arachide</h3>
+                        <p>Sauce onctueuse à l'arachide avec viande ou poisson fumé. Servie avec du riz ou du foufou.</p>
+                        <div class="specialty-price">2 500 FCFA</div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <a href="menu.html" class="btn btn-outline">Voir tout le menu complet</a>
+            </div>
+        </div>
+    </section>
+<!-- Section Galerie d'appel -->
+<section class="gallery-preview">
+    <div class="container">
+        <div class="section-header">
+            <h2>Visitez Notre Galerie</h2>
+            <p>Découvrez l'ambiance et nos plats en photos</p>
+        </div>
+        <div class="preview-grid">
+            <div class="preview-item">
+                <div class="preview-image" style="background: linear-gradient(45deg, #2ecc71, #27ae60); height: 200px; border-radius: var(--border-radius); display: flex; align-items: center; justify-content: center; color: white;">
+                    <i class="fas fa-utensils" style="font-size: 3rem;"></i>
+                </div>
+                <p class="preview-caption">Nos Plats</p>
+            </div>
+            <div class="preview-item">
+                <div class="preview-image" style="background: linear-gradient(45deg, #e74c3c, #c0392b); height: 200px; border-radius: var(--border-radius); display: flex; align-items: center; justify-content: center; color: white;">
+                    <i class="fas fa-store" style="font-size: 3rem;"></i>
+                </div>
+                <p class="preview-caption">Notre Intérieur</p>
+            </div>
+            <div class="preview-item">
+                <div class="preview-image" style="background: linear-gradient(45deg, #3498db, #2980b9); height: 200px; border-radius: var(--border-radius); display: flex; align-items: center; justify-content: center; color: white;">
+                    <i class="fas fa-users" style="font-size: 3rem;"></i>
+                </div>
+                <p class="preview-caption">Notre Équipe</p>
+            </div>
+        </div>
+        <div class="text-center" style="margin-top: 40px;">
+            <a href="galerie.html" class="btn btn-primary">
+                <i class="fas fa-images"></i> Voir toute la galerie
+            </a>
+        </div>
+    </div>
+</section>
+    <!-- Section Horaires & Infos -->
+    <section class="info-section">
+        <div class="container">
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Nos Horaires</h3>
+                    <div class="schedule">
+                        <div class="day">
+                            <span>Lundi - Vendredi</span>
+                            <span>10h - 22h</span>
+                        </div>
+                        <div class="day">
+                            <span>Samedi</span>
+                            <span>11h - 23h</span>
+                        </div>
+                        <div class="day">
+                            <span>Dimanche</span>
+                            <span>12h - 18h</span>
+                        </div>
+                    </div>
+                    <p style="margin-top: 15px; font-style: italic;">Service continu toute la journée</p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Nous Trouver</h3>
+                    <p><strong>Tinga, Yaoundé</strong></p>
+                    <p>À côté du marché central de Tinga</p>
+                    <p>Facilement accessible depuis le centre-ville</p>
+                    <a href="contact.html#map" class="btn-link">Voir sur la carte <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3>Commandes & Réservations</h3>
+                    <p class="phone-number" style="font-size: 1.4rem; font-weight: bold; margin: 10px 0;">+237 123 456 78</p>
+                    <p>Appelez ou envoyez un WhatsApp pour commander à l'avance</p>
+                    <div class="contact-buttons">
+                        <a href="tel:+23712345678" class="btn btn-small"><i class="fas fa-phone"></i> Appeler</a>
+                        <a href="https://wa.me/23712345678" class="btn btn-small btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="footer-logo">
+                        <div style="width: 40px; height: 40px; background: white; border-radius: 5px; margin-right: 10px; display: flex; align-items: center; justify-content: center; color: var(--dark-color); font-weight: bold;">AZ</div>
+                        <span>Cantine <strong>AZIMUT</strong></span>
+                    </a>
+                    <p>Saveurs authentiques du Cameroun au cœur de Tinga, Yaoundé. Plats traditionnels préparés avec passion et ingrédients frais.</p>
+                    <div class="social-links">
+                        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/23712345678" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Liens Rapides</h4>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="menu.html">Notre Menu</a></li>
+                        <li><a href="galerie.html">Galerie Photos</a></li>
+                        <li><a href="contact.html">Contact & Localisation</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Contactez-nous</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> Tinga, Yaoundé, Cameroun</li>
+                        <li><i class="fas fa-phone"></i> +237 123 456 78</li>
+                        <li><i class="fas fa-envelope"></i> contact@cantineazimut.com</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p>Recevez nos offres spéciales, nouveaux plats et promotions.</p>
+                    <form class="newsletter-form" id="newsletter-form">
+                        <input type="email" placeholder="Votre email" required>
+                        <button type="submit" class="btn btn-small">S'abonner</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> Cantine AZIMUT. Tous droits réservés.</p>
+                <p>Site réalisé avec passion pour Tinga, Yaoundé.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Menu mobile
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            if (mobileMenu) {
+                mobileMenu.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                });
+            }
+            
+            // Fermer le menu mobile quand on clique sur un lien
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+            
+            // Année actuelle dans le footer
+            const currentYear = document.getElementById('current-year');
+            if (currentYear) {
+                currentYear.textContent = new Date().getFullYear();
+            }
+            
+            // Newsletter form
+            const newsletterForm = document.getElementById('newsletter-form');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const emailInput = this.querySelector('input[type="email"]');
+                    const email = emailInput.value.trim();
+                    
+                    if (validateEmail(email)) {
+                        alert('Merci pour votre inscription à notre newsletter !');
+                        emailInput.value = '';
+                    } else {
+                        alert('Veuillez entrer une adresse email valide.');
+                    }
+                });
+            }
+            
+            function validateEmail(email) {
+                const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(String(email).toLowerCase());
+            }
+        });
+    </script>
+</body>
+</html>
