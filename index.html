@@ -101,45 +101,47 @@
         .specialty-content h3 { font-size: 1.3rem; margin-bottom: 10px; color: var(--dark-color); }
         .specialty-content p { color: var(--text-light); font-size: 0.95rem; margin-bottom: 15px; }
         .specialty-price { font-weight: 700; color: var(--primary-color); font-size: 1.2rem; }
+        
         /* Gallery Preview Section */
-.gallery-preview {
-    background-color: #f8f9fa;
-    padding: 80px 0;
-}
-
-.preview-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    max-width: 1000px;
-    margin: 0 auto 40px;
-}
-
-.preview-item {
-    text-align: center;
-    transition: var(--transition);
-}
-
-.preview-item:hover {
-    transform: translateY(-10px);
-}
-
-.preview-image {
-    margin-bottom: 15px;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-}
-
-.preview-item:hover .preview-image {
-    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-}
-
-.preview-caption {
-    font-weight: 600;
-    color: var(--dark-color);
-    font-size: 1.2rem;
-}
+        .gallery-preview {
+            background-color: #f8f9fa;
+            padding: 80px 0;
+        }
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto 40px;
+        }
+        .preview-item {
+            text-align: center;
+            transition: var(--transition);
+        }
+        .preview-item:hover {
+            transform: translateY(-10px);
+        }
+        .preview-image {
+            margin-bottom: 15px;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        .preview-item:hover .preview-image {
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        .preview-caption {
+            font-weight: 600;
+            color: var(--dark-color);
+            font-size: 1.2rem;
+        }
+        
         /* INFO SECTION */
         .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .info-card { background-color: white; padding: 30px; border-radius: var(--border-radius); box-shadow: var(--shadow); text-align: center; transition: var(--transition); }
@@ -207,7 +209,6 @@
             .hero-buttons { flex-direction: column; align-items: center; }
             .contact-buttons { flex-direction: column; }
         }
-        
     </style>
 </head>
 <body>
@@ -228,7 +229,7 @@
             <ul class="nav-menu">
                 <li><a href="index.html" class="active">Accueil</a></li>
                 <li><a href="menu.html">Notre Menu</a></li>
-                <li><a href="galerie.html">Galerie</a></li>
+                <li><a href="galery.html">Galerie</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li class="nav-cta"><a href="tel:+23712345678" class="btn btn-call"><i class="fas fa-phone"></i> Commander</a></li>
             </ul>
@@ -243,7 +244,7 @@
                 <p class="subtitle">À la Cantine AZIMUT de Tinga, Yaoundé, nous préparons chaque plat avec passion et des ingrédients frais. Découvrez l'authenticité des saveurs locales dans un cadre chaleureux et convivial.</p>
                 <div class="hero-buttons">
                     <a href="menu.html" class="btn btn-primary">Voir le Menu</a>
-                    <a href="tel:+23712345678" class="btn btn-secondary"><i class="fas fa-phone-alt"></i> Commander</a>
+                    <a href="galery.html" class="btn btn-secondary"><i class="fas fa-images"></i> Voir la Galerie</a>
                 </div>
             </div>
             <div class="hero-image">
@@ -309,96 +310,113 @@
             </div>
             <div class="specialties-grid">
                 <div class="specialty-card">
-                    <div class="specialty-img">
-                        <div style="width: 100%; height: 100%; background: linear-gradient(45deg, #2ecc71, #27ae60); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
-                            <i class="fas fa-leaf" style="font-size: 3rem;"></i>
+                    <a href="galery.html" style="text-decoration: none; color: inherit;">
+                        <div class="specialty-img">
+                            <div style="width: 100%; height: 100%; background: linear-gradient(45deg, #2ecc71, #27ae60); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
+                                <i class="fas fa-leaf" style="font-size: 3rem;"></i>
+                            </div>
                         </div>
-                    </div>
-                    <div class="specialty-content">
-                        <h3>Ndolé aux crevettes</h3>
-                        <p>Notre plat signature : feuilles de ndolé, arachides, viande et crevettes séchées. Servi avec plantain ou riz.</p>
-                        <div class="specialty-price">3 500 FCFA</div>
-                    </div>
+                        <div class="specialty-content">
+                            <h3>Ndolé aux crevettes</h3>
+                            <p>Notre plat signature : feuilles de ndolé, arachides, viande et crevettes séchées. Servi avec plantain ou riz.</p>
+                            <div class="specialty-price">3 500 FCFA</div>
+                        </div>
+                    </a>
                 </div>
                 
                 <div class="specialty-card">
-                    <div class="specialty-img">
-                        <div style="width: 100%; height: 100%; background: linear-gradient(45deg, #e74c3c, #c0392b); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
-                            <i class="fas fa-drumstick-bite" style="font-size: 3rem;"></i>
+                    <a href="galery.html" style="text-decoration: none; color: inherit;">
+                        <div class="specialty-img">
+                            <div style="width: 100%; height: 100%; background: linear-gradient(45deg, #e74c3c, #c0392b); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
+                                <i class="fas fa-drumstick-bite" style="font-size: 3rem;"></i>
+                            </div>
                         </div>
-                    </div>
-                    <div class="specialty-content">
-                        <h3>Poulet DG</h3>
-                        <p>Poulet frit avec plantain, légumes frais et épices locales. Un classique camerounais revisité.</p>
-                        <div class="specialty-price">3 000 FCFA</div>
-                    </div>
+                        <div class="specialty-content">
+                            <h3>Poulet DG</h3>
+                            <p>Poulet frit avec plantain, légumes frais et épices locales. Un classique camerounais revisité.</p>
+                            <div class="specialty-price">3 000 FCFA</div>
+                        </div>
+                    </a>
                 </div>
                 
                 <div class="specialty-card">
-                    <div class="specialty-img">
-                        <div style="width: 100%; height: 100%; background: linear-gradient(45deg, #3498db, #2980b9); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
-                            <i class="fas fa-fish" style="font-size: 3rem;"></i>
+                    <a href="galery.html" style="text-decoration: none; color: inherit;">
+                        <div class="specialty-img">
+                            <div style="width: 100%; height: 100%; background: linear-gradient(45deg, #3498db, #2980b9); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
+                                <i class="fas fa-fish" style="font-size: 3rem;"></i>
+                            </div>
                         </div>
-                    </div>
-                    <div class="specialty-content">
-                        <h3>Poisson braisé</h3>
-                        <p>Capitaine ou maquereau grillé avec épices, servi avec plantain ou bâton de manioc. Frais et savoureux.</p>
-                        <div class="specialty-price">4 000 FCFA</div>
-                    </div>
+                        <div class="specialty-content">
+                            <h3>Poisson braisé</h3>
+                            <p>Capitaine ou maquereau grillé avec épices, servi avec plantain ou bâton de manioc. Frais et savoureux.</p>
+                            <div class="specialty-price">4 000 FCFA</div>
+                        </div>
+                    </a>
                 </div>
                 
                 <div class="specialty-card">
-                    <div class="specialty-img">
-                        <div style="width: 100%; height: 100%; background: linear-gradient(45deg, #f39c12, #e67e22); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
-                            <i class="fas fa-mortar-pestle" style="font-size: 3rem;"></i>
+                    <a href="galery.html" style="text-decoration: none; color: inherit;">
+                        <div class="specialty-img">
+                            <div style="width: 100%; height: 100%; background: linear-gradient(45deg, #f39c12, #e67e22); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
+                                <i class="fas fa-mortar-pestle" style="font-size: 3rem;"></i>
+                            </div>
                         </div>
-                    </div>
-                    <div class="specialty-content">
-                        <h3>Sauce d'arachide</h3>
-                        <p>Sauce onctueuse à l'arachide avec viande ou poisson fumé. Servie avec du riz ou du foufou.</p>
-                        <div class="specialty-price">2 500 FCFA</div>
-                    </div>
+                        <div class="specialty-content">
+                            <h3>Sauce d'arachide</h3>
+                            <p>Sauce onctueuse à l'arachide avec viande ou poisson fumé. Servie avec du riz ou du foufou.</p>
+                            <div class="specialty-price">2 500 FCFA</div>
+                        </div>
+                    </a>
                 </div>
             </div>
             <div class="text-center">
                 <a href="menu.html" class="btn btn-outline">Voir tout le menu complet</a>
+                <a href="galery.html" class="btn btn-primary" style="margin-left: 15px;"><i class="fas fa-images"></i> Galerie des plats</a>
             </div>
         </div>
     </section>
-<!-- Section Galerie d'appel -->
-<section class="gallery-preview">
-    <div class="container">
-        <div class="section-header">
-            <h2>Visitez Notre Galerie</h2>
-            <p>Découvrez l'ambiance et nos plats en photos</p>
-        </div>
-        <div class="preview-grid">
-            <div class="preview-item">
-                <div class="preview-image" style="background: linear-gradient(45deg, #2ecc71, #27ae60); height: 200px; border-radius: var(--border-radius); display: flex; align-items: center; justify-content: center; color: white;">
-                    <i class="fas fa-utensils" style="font-size: 3rem;"></i>
-                </div>
-                <p class="preview-caption">Nos Plats</p>
+
+    <!-- Section Galerie d'appel -->
+    <section class="gallery-preview">
+        <div class="container">
+            <div class="section-header">
+                <h2>Visitez Notre Galerie</h2>
+                <p>Découvrez l'ambiance et nos plats en photos</p>
             </div>
-            <div class="preview-item">
-                <div class="preview-image" style="background: linear-gradient(45deg, #e74c3c, #c0392b); height: 200px; border-radius: var(--border-radius); display: flex; align-items: center; justify-content: center; color: white;">
-                    <i class="fas fa-store" style="font-size: 3rem;"></i>
+            <div class="preview-grid">
+                <div class="preview-item">
+                    <a href="galery.html">
+                        <div class="preview-image" style="background: linear-gradient(45deg, #2ecc71, #27ae60);">
+                            <i class="fas fa-utensils" style="font-size: 3rem;"></i>
+                        </div>
+                        <p class="preview-caption">Nos Plats</p>
+                    </a>
                 </div>
-                <p class="preview-caption">Notre Intérieur</p>
+                <div class="preview-item">
+                    <a href="galery.html">
+                        <div class="preview-image" style="background: linear-gradient(45deg, #e74c3c, #c0392b);">
+                            <i class="fas fa-store" style="font-size: 3rem;"></i>
+                        </div>
+                        <p class="preview-caption">Notre Intérieur</p>
+                    </a>
+                </div>
+                <div class="preview-item">
+                    <a href="galery.html">
+                        <div class="preview-image" style="background: linear-gradient(45deg, #3498db, #2980b9);">
+                            <i class="fas fa-users" style="font-size: 3rem;"></i>
+                        </div>
+                        <p class="preview-caption">Notre Équipe</p>
+                    </a>
+                </div>
             </div>
-            <div class="preview-item">
-                <div class="preview-image" style="background: linear-gradient(45deg, #3498db, #2980b9); height: 200px; border-radius: var(--border-radius); display: flex; align-items: center; justify-content: center; color: white;">
-                    <i class="fas fa-users" style="font-size: 3rem;"></i>
-                </div>
-                <p class="preview-caption">Notre Équipe</p>
+            <div class="text-center" style="margin-top: 40px;">
+                <a href="galery.html" class="btn btn-primary">
+                    <i class="fas fa-images"></i> Voir toute la galerie
+                </a>
             </div>
         </div>
-        <div class="text-center" style="margin-top: 40px;">
-            <a href="galerie.html" class="btn btn-primary">
-                <i class="fas fa-images"></i> Voir toute la galerie
-            </a>
-        </div>
-    </div>
-</section>
+    </section>
+
     <!-- Section Horaires & Infos -->
     <section class="info-section">
         <div class="container">
@@ -474,7 +492,7 @@
                     <ul>
                         <li><a href="index.html">Accueil</a></li>
                         <li><a href="menu.html">Notre Menu</a></li>
-                        <li><a href="galerie.html">Galerie Photos</a></li>
+                        <li><a href="galery.html">Galerie</a></li>
                         <li><a href="contact.html">Contact & Localisation</a></li>
                     </ul>
                 </div>

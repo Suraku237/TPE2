@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        /* MÊME STYLE QUE INDEX.HTML - copié pour avoir tout dans un seul fichier */
+        /* STYLES - identiques à l'original */
         :root {
             --primary-color: #e44c26;
             --secondary-color: #f9b248;
@@ -95,9 +95,6 @@
             opacity: 0; border-radius: 100%; transform: scale(1, 1) translate(-50%);
             transform-origin: 50% 50%;
         }
-        .filter-btn:focus:not(:active)::after {
-            animation: ripple 1s ease-out;
-        }
         
         /* MENU CATEGORIES */
         .menu-category { margin-bottom: 60px; }
@@ -155,6 +152,69 @@
             margin-top: 5px;
         }
         
+        /* NEW GALLERY SECTION IN MENU */
+        .gallery-cta-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            text-align: center;
+        }
+        .gallery-cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        .gallery-cta-content h2 {
+            font-size: 2.2rem;
+            color: var(--dark-color);
+            margin-bottom: 20px;
+        }
+        .gallery-cta-content p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        .gallery-preview-mini {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .gallery-mini-item {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            height: 120px;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+        .gallery-mini-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .gallery-mini-item:nth-child(1) {
+            background: linear-gradient(45deg, #2ecc71, #27ae60);
+        }
+        .gallery-mini-item:nth-child(2) {
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+        }
+        .gallery-mini-item:nth-child(3) {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+        }
+        .gallery-mini-item a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+        }
+        
         /* DAILY MENU */
         .daily-menu-section { padding: 60px 0; background-color: #fff8e1; }
         .daily-menu-card {
@@ -184,9 +244,6 @@
             display: flex; align-items: center; justify-content: flex-end;
             gap: 10px;
         }
-        .daily-menu-price span {
-            font-size: 1.2rem; opacity: 0.8;
-        }
         
         /* MENU NOTE */
         .menu-note {
@@ -194,10 +251,6 @@
             margin-top: 50px; text-align: center; font-style: italic;
             border-left: 5px solid #4CAF50; position: relative;
             box-shadow: 0 5px 15px rgba(76, 175, 80, 0.1);
-        }
-        .menu-note::before {
-            content: '💡'; position: absolute; left: 15px; top: 15px;
-            font-size: 1.5rem;
         }
         
         /* CTA SECTION */
@@ -218,15 +271,6 @@
             padding: 15px 35px; font-size: 1.1rem; 
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             position: relative; overflow: hidden;
-        }
-        .btn-large::after {
-            content: ''; position: absolute; top: 50%; left: 50%;
-            width: 0; height: 0; background: rgba(255,255,255,0.3);
-            border-radius: 50%; transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-        .btn-large:hover::after {
-            width: 300px; height: 300px;
         }
         
         /* FOOTER */
@@ -306,40 +350,6 @@
             100% { transform: scale(1); box-shadow: 0 3px 10px rgba(249, 178, 72, 0.3); }
         }
         
-        @keyframes ripple {
-            0% { transform: scale(0, 0); opacity: 0.5; }
-            100% { transform: scale(20, 20); opacity: 0; }
-        }
-        
-        /* ANIMATION DELAYS POUR LES ITEMS DE MENU */
-        .menu-item:nth-child(1) { animation-delay: 0.1s; }
-        .menu-item:nth-child(2) { animation-delay: 0.2s; }
-        .menu-item:nth-child(3) { animation-delay: 0.3s; }
-        .menu-item:nth-child(4) { animation-delay: 0.4s; }
-        .menu-item:nth-child(5) { animation-delay: 0.5s; }
-        
-        /* SEPARATEURS ENTRE CATEGORIES */
-        .menu-category:not(:last-child) {
-            border-bottom: 2px dashed var(--border-color);
-            padding-bottom: 40px;
-        }
-        
-        /* STYLES SUPPLEMENTAIRES POUR LES ICONES DANS LES PLATS */
-        .menu-item-with-icon {
-            display: flex; align-items: flex-start; gap: 15px;
-        }
-        .menu-icon {
-            width: 50px; height: 50px; background: var(--primary-color);
-            border-radius: 50%; display: flex; align-items: center;
-            justify-content: center; color: white; font-size: 1.2rem;
-            flex-shrink: 0; box-shadow: 0 5px 15px rgba(228, 76, 38, 0.3);
-            transition: var(--transition);
-        }
-        .menu-item:hover .menu-icon {
-            transform: rotate(15deg) scale(1.1);
-            background: var(--secondary-color);
-        }
-        
         /* RESPONSIVE */
         @media (max-width: 992px) {
             .menu-item {
@@ -352,6 +362,9 @@
             }
             .item-price::after {
                 left: 0; right: auto;
+            }
+            .gallery-preview-mini {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
         
@@ -372,6 +385,12 @@
             .daily-menu-card { padding: 30px 25px; }
             .daily-menu-content h4 { font-size: 1.7rem; }
             .daily-menu-price { font-size: 2rem; }
+            .gallery-preview-mini {
+                grid-template-columns: 1fr;
+            }
+            .gallery-cta-content {
+                padding: 30px 20px;
+            }
         }
         
         @media (max-width: 576px) {
@@ -387,103 +406,13 @@
             .menu-item { padding: 20px 15px; }
             .filters { flex-direction: column; align-items: center; }
             .filter-btn { width: 90%; margin-bottom: 8px; }
-        }
-        
-        @media (max-width: 400px) {
-            .daily-menu-card { padding: 25px 20px; }
-            .daily-menu-content h4 { font-size: 1.5rem; }
-            .daily-menu-price { font-size: 1.8rem; flex-direction: column; align-items: flex-end; }
-            .menu-note { padding: 20px 15px; font-size: 0.9rem; }
-        }
-        
-        /* SCROLLBAR PERSONNALISEE */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 5px;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--primary-color);
-            border-radius: 5px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #d1401f;
-        }
-        
-        /* EFFET DE CHARGEMENT */
-        .loading {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.9);
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .loading-spinner {
-            width: 50px;
-            height: 50px;
-            border: 5px solid #f3f3f3;
-            border-top: 5px solid var(--primary-color);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        /* HIGHLIGHT POUR NOUVEAUX PLATS */
-        .new-item {
-            position: relative;
-        }
-        .new-item::before {
-            content: 'Nouveau';
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            background: #ff4757;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: bold;
-            z-index: 1;
-            box-shadow: 0 3px 10px rgba(255, 71, 87, 0.3);
-        }
-        
-        /* TOOLTIP POUR LES DESCRIPTIONS */
-        .item-desc {
-            position: relative;
-        }
-        .item-desc:hover::after {
-            content: attr(data-tooltip);
-            position: absolute;
-            bottom: 100%;
-            left: 0;
-            background: var(--dark-color);
-            color: white;
-            padding: 8px 12px;
-            border-radius: var(--border-radius);
-            font-size: 0.8rem;
-            white-space: nowrap;
-            z-index: 10;
-            box-shadow: var(--shadow);
+            .gallery-cta-content h2 {
+                font-size: 1.8rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Écran de chargement -->
-    <div class="loading" id="loading">
-        <div class="loading-spinner"></div>
-    </div>
-
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container nav-container">
@@ -501,7 +430,7 @@
             <ul class="nav-menu">
                 <li><a href="index.html">Accueil</a></li>
                 <li><a href="menu.html" class="active">Notre Menu</a></li>
-                <li><a href="galerie.html">Galerie</a></li>
+                <li><a href="galery.html">Galerie</a></li> <!-- Correction: enlevé class="active" -->
                 <li><a href="contact.html">Contact</a></li>
                 <li class="nav-cta"><a href="tel:+23712345678" class="btn btn-call"><i class="fas fa-phone"></i> Commander</a></li>
             </ul>
@@ -565,7 +494,7 @@
                                     Ndolé aux crevettes
                                     <span class="popular-badge"><i class="fas fa-star"></i> Populaire</span>
                                 </h4>
-                                <p class="item-desc" data-tooltip="Notre plat signature !">Feuilles de ndolé, arachides, viande et crevettes séchées</p>
+                                <p class="item-desc">Feuilles de ndolé, arachides, viande et crevettes séchées</p>
                             </div>
                         </div>
                         <div class="item-price">
@@ -584,7 +513,7 @@
                                     Poulet DG
                                     <span class="popular-badge"><i class="fas fa-star"></i> Populaire</span>
                                 </h4>
-                                <p class="item-desc" data-tooltip="Un classique revisité">Poulet frit avec plantain et légumes frais</p>
+                                <p class="item-desc">Poulet frit avec plantain et légumes frais</p>
                             </div>
                         </div>
                         <div class="item-price">
@@ -600,7 +529,7 @@
                             </div>
                             <div class="item-info">
                                 <h4 class="item-name">Sauce d'arachide au poisson</h4>
-                                <p class="item-desc" data-tooltip="Sauce onctueuse et savoureuse">Sauce onctueuse au poisson fumé</p>
+                                <p class="item-desc">Sauce onctueuse au poisson fumé</p>
                             </div>
                         </div>
                         <div class="item-price">
@@ -616,7 +545,7 @@
                             </div>
                             <div class="item-info">
                                 <h4 class="item-name">Eru/Ekoki</h4>
-                                <p class="item-desc" data-tooltip="Légumes traditionnels">Légumes feuilles avec viande ou poisson fumé</p>
+                                <p class="item-desc">Légumes feuilles avec viande ou poisson fumé</p>
                             </div>
                         </div>
                         <div class="item-price">
@@ -635,7 +564,7 @@
                                     Mbongo'o Tchobi
                                     <span class="popular-badge"><i class="fas fa-star"></i> Populaire</span>
                                 </h4>
-                                <p class="item-desc" data-tooltip="Pour les amateurs d'épices">Sauce noire épicée au poisson</p>
+                                <p class="item-desc">Sauce noire épicée au poisson</p>
                             </div>
                         </div>
                         <div class="item-price">
@@ -660,7 +589,7 @@
                                     Poisson braisé (Capitaine)
                                     <span class="popular-badge"><i class="fas fa-star"></i> Populaire</span>
                                 </h4>
-                                <p class="item-desc" data-tooltip="Frais du jour">Poisson grillé aux épices locales</p>
+                                <p class="item-desc">Poisson grillé aux épices locales</p>
                             </div>
                         </div>
                         <div class="item-price">
@@ -676,7 +605,7 @@
                             </div>
                             <div class="item-info">
                                 <h4 class="item-name">Soya</h4>
-                                <p class="item-desc" data-tooltip="Brochettes épicées">Brochettes de viande épicées (3 pièces)</p>
+                                <p class="item-desc">Brochettes de viande épicées (3 pièces)</p>
                             </div>
                         </div>
                         <div class="item-price">
@@ -692,7 +621,7 @@
                             </div>
                             <div class="item-info">
                                 <h4 class="item-name">Kondre</h4>
-                                <p class="item-desc" data-tooltip="Ragoût traditionnel">Ragoût de plantain vert avec viande de chèvre</p>
+                                <p class="item-desc">Ragoût de plantain vert avec viande de chèvre</p>
                             </div>
                         </div>
                         <div class="item-price">
@@ -756,7 +685,7 @@
                                 Macabo râpé (Kouakoukou)
                                 <span class="popular-badge"><i class="fas fa-star"></i> Populaire</span>
                             </h4>
-                            <p class="item-desc" data-tooltip="Spécialité locale">Macabo râpé cuit en papillote</p>
+                            <p class="item-desc">Macabo râpé cuit en papillote</p>
                         </div>
                         <div class="item-price">
                             1 200 
@@ -790,7 +719,7 @@
                                     Jus naturel
                                     <span class="popular-badge"><i class="fas fa-star"></i> Populaire</span>
                                 </h4>
-                                <p class="item-desc" data-tooltip="Pressé maison">Ananas, Mangue, Orange (au choix)</p>
+                                <p class="item-desc">Ananas, Mangue, Orange (au choix)</p>
                             </div>
                         </div>
                         <div class="item-price">
@@ -806,7 +735,7 @@
                             </div>
                             <div class="item-info">
                                 <h4 class="item-name">Soda</h4>
-                                <p class="item-desc" data-tooltip="Bien frais">Coca, Fanta, Sprite (33cl)</p>
+                                <p class="item-desc">Coca, Fanta, Sprite (33cl)</p>
                             </div>
                         </div>
                         <div class="item-price">
@@ -832,8 +761,47 @@
                 </div>
             </div>
             
+            <!-- Note importante -->
             <div class="menu-note">
                 <p><i class="fas fa-info-circle"></i> Tous nos plats sont préparés sur commande. Les prix sont en FCFA. N'hésitez pas à nous appeler pour toute question sur les ingrédients ou allergies alimentaires.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW GALLERY CTA SECTION - Linking to galerie.html -->
+    <section class="gallery-cta-section">
+        <div class="container">
+            <div class="gallery-cta-content">
+                <h2>Voir nos plats en images</h2>
+                <p>Curieux de voir à quoi ressemblent nos spécialités ? Visitez notre galerie photos pour découvrir nos plats préparés avec soin, notre ambiance chaleureuse et notre équipe passionnée.</p>
+                
+                <div class="gallery-preview-mini">
+                    <div class="gallery-mini-item">
+                        <a href="galery.html">
+                            <i class="fas fa-utensils"></i>
+                            <span style="margin-left: 10px;">Plats</span>
+                        </a>
+                    </div>
+                    <div class="gallery-mini-item">
+                        <a href="galery.html">
+                            <i class="fas fa-store"></i>
+                            <span style="margin-left: 10px;">Intérieur</span>
+                        </a>
+                    </div>
+                    <div class="gallery-mini-item">
+                        <a href="galery.html">
+                            <i class="fas fa-users"></i>
+                            <span style="margin-left: 10px;">Équipe</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <a href="galery.html" class="btn btn-primary btn-large">
+                    <i class="fas fa-images"></i> Visiter la Galerie Complète
+                </a>
+                <p style="margin-top: 20px; font-size: 0.9rem; color: var(--text-light);">
+                    <i class="fas fa-info-circle"></i> Naviguez vers notre galerie pour voir toutes nos photos en haute qualité
+                </p>
             </div>
         </div>
     </section>
@@ -846,6 +814,9 @@
             <div class="cta-buttons">
                 <a href="tel:+23712345678" class="btn btn-primary btn-large"><i class="fas fa-phone-alt"></i> Appeler pour commander</a>
                 <a href="contact.html#map" class="btn btn-outline btn-large"><i class="fas fa-map-marker-alt"></i> Voir notre localisation</a>
+                <a href="galery.html" class="btn btn-secondary btn-large" style="margin-top: 10px;">
+                    <i class="fas fa-images"></i> Voir la Galerie Photos
+                </a>
             </div>
         </div>
     </section>
@@ -872,7 +843,7 @@
                     <ul>
                         <li><a href="index.html">Accueil</a></li>
                         <li><a href="menu.html">Notre Menu</a></li>
-                        <li><a href="galerie.html">Galerie Photos</a></li>
+                        <li><a href="galery.html">Galerie Photos</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
@@ -906,11 +877,6 @@
     <!-- JavaScript -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Masquer l'écran de chargement
-            setTimeout(function() {
-                document.getElementById('loading').style.display = 'none';
-            }, 500);
-            
             // Menu mobile
             const mobileMenu = document.getElementById('mobile-menu');
             const navMenu = document.querySelector('.nav-menu');
@@ -969,15 +935,6 @@
                     this.classList.add('active');
                 });
             });
-            
-            // Effet de survol pour les tooltips
-            document.querySelectorAll('.item-desc').forEach(desc => {
-                desc.addEventListener('mouseenter', function() {
-                    if (this.getAttribute('data-tooltip')) {
-                        this.style.cursor = 'help';
-                    }
-                });
-            });
         });
         
         // Fonction de filtrage du menu
@@ -998,6 +955,17 @@
                         cat.style.display = 'none';
                     }
                 });
+            }
+            
+            // Scroll to the category
+            if (categoryId !== 'all') {
+                const element = document.getElementById(categoryId);
+                if (element) {
+                    window.scrollTo({
+                        top: element.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
             }
         }
         

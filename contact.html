@@ -36,6 +36,7 @@
         .btn-secondary { background-color: var(--secondary-color); }
         .btn-whatsapp { background-color: #25D366; }
         .btn-call { background-color: #4CAF50; }
+        .btn-gallery { background-color: #8e44ad; } /* New gallery button color */
         
         /* NAVBAR */
         .navbar {
@@ -91,6 +92,28 @@
         .contact-item-content p { color: var(--text-light); margin-bottom: 5px; }
         .phone-number { font-size: 1.5rem; font-weight: bold; color: var(--primary-color); margin: 10px 0; }
         .contact-buttons { display: flex; gap: 15px; margin-top: 20px; flex-wrap: wrap; }
+        
+        /* GALLERY CTA SECTION */
+        .gallery-cta-contact {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white; padding: 60px 0; margin: 40px 0;
+            border-radius: var(--border-radius);
+        }
+        .gallery-cta-content {
+            text-align: center; max-width: 800px; margin: 0 auto;
+        }
+        .gallery-cta-content h2 { 
+            font-size: 2.5rem; margin-bottom: 20px; 
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .gallery-cta-content p { 
+            font-size: 1.2rem; opacity: 0.9; margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        .gallery-cta-buttons { 
+            display: flex; gap: 20px; justify-content: center; 
+            flex-wrap: wrap;
+        }
         
         /* CONTACT MAP */
         .contact-map h2 { font-size: 2.5rem; color: var(--dark-color); margin-bottom: 30px; }
@@ -160,6 +183,7 @@
         @media (max-width: 992px) {
             .contact-grid { grid-template-columns: 1fr; }
             .map-placeholder { margin-top: 30px; }
+            .gallery-cta-buttons { flex-direction: column; align-items: center; }
         }
         @media (max-width: 768px) {
             .nav-menu {
@@ -174,11 +198,14 @@
             .page-header h1 { font-size: 2.5rem; }
             .contact-form-section { padding: 40px 25px; }
             .form-row { grid-template-columns: 1fr; }
+            .gallery-cta-content h2 { font-size: 2rem; }
+            .gallery-cta-content p { font-size: 1.1rem; }
         }
         @media (max-width: 576px) {
             .page-header h1 { font-size: 2rem; }
             .btn { padding: 10px 20px; }
             .contact-buttons { flex-direction: column; }
+            .gallery-cta-content h2 { font-size: 1.8rem; }
         }
     </style>
 </head>
@@ -200,8 +227,8 @@
             <ul class="nav-menu">
                 <li><a href="index.html">Accueil</a></li>
                 <li><a href="menu.html">Notre Menu</a></li>
-                <li><a href="galerie.html">Galerie</a></li>
-                <li><a href="contact.html" class="active">Contact</a></li>
+                <li><a href="galery.html">Galerie</a></li> <!-- Fixed: removed class="active" -->
+                <li><a href="contact.html" class="active">Contact</a></li> <!-- Only Contact is active -->
                 <li class="nav-cta"><a href="tel:+23712345678" class="btn btn-call"><i class="fas fa-phone"></i> Commander</a></li>
             </ul>
         </div>
@@ -240,6 +267,17 @@
                             <p class="phone-number">+237 123 456 78</p>
                             <p>Pour commandes, réservations et renseignements</p>
                             <p>Appelez-nous du lundi au dimanche pendant nos heures d'ouverture</p>
+                            <div class="contact-buttons">
+                                <a href="tel:+23712345678" class="btn btn-primary">
+                                    <i class="fas fa-phone"></i> Appeler
+                                </a>
+                                <a href="https://wa.me/23712345678" class="btn btn-whatsapp">
+                                    <i class="fab fa-whatsapp"></i> WhatsApp
+                                </a>
+                                <a href="galery.html" class="btn btn-gallery">
+                                    <i class="fas fa-images"></i> Voir Galerie
+                                </a>
+                            </div>
                         </div>
                     </div>
                     
@@ -247,8 +285,9 @@
                         <i class="fas fa-clock"></i>
                         <div class="contact-item-content">
                             <h3>Horaires d'ouverture</h3>
-                            <p><strong>Lundi - Vendredi:</strong> 11h3 - 12h15</p>
-                            <p><strong>Samedi:</strong> 11h3 - 12h15</p>
+                            <p><strong>Lundi - Vendredi:</strong> 10h - 22h</p> <!-- Fixed time -->
+                            <p><strong>Samedi:</strong> 11h - 23h</p> <!-- Fixed time -->
+                            <p><strong>Dimanche:</strong> 12h - 18h</p> <!-- Fixed time -->
                             <p><em>Service continu toute la journée</em></p>
                         </div>
                     </div>
@@ -261,18 +300,6 @@
                             <p>Pour les demandes générales et collaborations</p>
                             <p>Nous répondons dans les 24 heures</p>
                         </div>
-                    </div>
-                    
-                    <div class="contact-buttons">
-                        <a href="tel:+23712345678" class="btn btn-primary">
-                            <i class="fas fa-phone"></i> Appeler maintenant
-                        </a>
-                        <a href="https://wa.me/23712345678" class="btn btn-whatsapp">
-                            <i class="fab fa-whatsapp"></i> WhatsApp
-                        </a>
-                        <a href="mailto:contact@cantineazimut.com" class="btn btn-secondary">
-                            <i class="fas fa-envelope"></i> Envoyer un email
-                        </a>
                     </div>
                 </div>
                 
@@ -291,11 +318,38 @@
                             <li>Copiez le code iframe et remplacez cette section</li>
                         </ol>
                         
-                        <p style="margin-top: 20px; font-style: italic;">
-                            <i class="fas fa-info-circle"></i> 
-                            En attendant, vous pouvez utiliser Waze ou Google Maps avec l'adresse : 
-                            <strong>"Marché Central de Tinga, Yaoundé"</strong>
-                        </p>
+                        <div style="margin-top: 30px; padding: 20px; background: rgba(228, 76, 38, 0.1); border-radius: var(--border-radius);">
+                            <p style="font-style: italic; color: var(--primary-color);">
+                                <i class="fas fa-info-circle"></i> 
+                                <strong>Avant de venir, découvrez notre ambiance !</strong><br>
+                                <a href="galery.html" style="color: var(--primary-color); text-decoration: underline;">
+                                    Voir l'intérieur de notre cantine dans la galerie →
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- NEW GALLERY CTA SECTION -->
+            <div class="gallery-cta-contact">
+                <div class="gallery-cta-content">
+                    <h2>Découvrez notre univers en images</h2>
+                    <p>Avant de nous rendre visite ou de commander, explorez notre galerie photos pour découvrir nos plats, notre ambiance chaleureuse et notre équipe passionnée.</p>
+                    
+                    <div class="gallery-cta-buttons">
+                        <a href="galery.html" class="btn" style="background-color: #2ecc71;">
+                            <i class="fas fa-utensils"></i> Nos Plats
+                        </a>
+                        <a href="galery.html" class="btn" style="background-color: #e74c3c;">
+                            <i class="fas fa-store"></i> Notre Intérieur
+                        </a>
+                        <a href="galery.html" class="btn" style="background-color: #3498db;">
+                            <i class="fas fa-users"></i> Notre Équipe
+                        </a>
+                        <a href="galery.html" class="btn btn-primary">
+                            <i class="fas fa-images"></i> Galerie Complète
+                        </a>
                     </div>
                 </div>
             </div>
@@ -338,9 +392,17 @@
                         <textarea id="message" name="message" placeholder="Écrivez votre message ici..." rows="6" required></textarea>
                     </div>
                     
-                    <button type="submit" class="btn btn-primary" style="align-self: flex-start; padding: 15px 40px; font-size: 1.1rem;">
-                        <i class="fas fa-paper-plane"></i> Envoyer le message
-                    </button>
+                    <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
+                        <button type="submit" class="btn btn-primary" style="padding: 15px 40px; font-size: 1.1rem;">
+                            <i class="fas fa-paper-plane"></i> Envoyer le message
+                        </button>
+                        <div style="font-size: 0.9rem; color: var(--text-light);">
+                            <i class="fas fa-info-circle"></i> Vous pouvez aussi 
+                            <a href="galery.html" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">
+                                visiter notre galerie
+                            </a> pour mieux nous connaître
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
@@ -368,7 +430,7 @@
                     <ul>
                         <li><a href="index.html">Accueil</a></li>
                         <li><a href="menu.html">Notre Menu</a></li>
-                        <li><a href="galerie.html">Galerie Photos</a></li>
+                        <li><a href="galery.html">Galerie Photos</a></li>
                         <li><a href="contact.html">Contact & Localisation</a></li>
                     </ul>
                 </div>
@@ -450,7 +512,7 @@
                         return;
                     }
                     
-                    // Simulation d'envoi (remplacer par un vrai envoi backend)
+                    // Simulation d'envoi
                     alert(`Merci ${name} ! Votre message a été envoyé. Nous vous répondrons à ${email} dans les plus brefs délais.`);
                     contactForm.reset();
                 });
